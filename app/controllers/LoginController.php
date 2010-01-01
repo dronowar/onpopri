@@ -3,13 +3,13 @@
 class LoginController extends BaseController {
 	
 	public function getIndex(){
-		return View::make('login');
+		return View::make('index')->with('user', Auth::user());
 	}
 
 	public function getGoogle(){
 		// get data from input
 	    $code = Input::get( 'code' );
-
+	    
 	    // get google service
 	    $googleService = OAuth::consumer( 'Google' );
 
@@ -41,10 +41,14 @@ class LoginController extends BaseController {
 	        		$user->save();
 	        	}
 	        Auth::login($user);
-	        return Redirect::to('/')->with('message', 'Logged in with Google');
+	        if(Session::has('maket_url')){
+	        	return Redirect::to('/orderitem/new');
+	        }
+	        return Redirect::to('/home');
 	    }
 	    // if not ask for permission first
 	    else {
+	    	if($maket_url = Input::get('url')) Session::put('maket_url', $maket_url);
 	        // get googleService authorization
 	        $url = $googleService->getAuthorizationUri();
 
