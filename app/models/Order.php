@@ -16,10 +16,28 @@ class Order extends Eloquent {
     	'price',
     );
 
+    public static $status = array(
+    	0 => 'maket_modaration',
+    	1 => 'maket_rejected',
+    	2 => 'payment_is_required',
+    	3 => 'paid',
+    	4 => 'completed',
+    	5 => 'delivered',
+    	6 => 'received',
+    	7 => 'deleted',
+    	);
+
     public static $payments = array(
-    	'PayPal' => 1,
-    	'Visa / Master Card' => 2,
+    	 1 => 'PayPal',
+    	 2 => 'Visa / Master Card',
     );
+
+    public function user(){
+		return $this->belongsTo('User');
+	}
+	public function orderitems(){
+		return $this->hasMany('Orderitems');
+	}
 
 
 }

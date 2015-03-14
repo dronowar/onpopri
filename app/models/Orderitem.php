@@ -11,6 +11,10 @@ class Orderitem extends Eloquent {
     	'price',
     );
 
+    public function order(){
+        return $this->belongsTo('Order');
+    }
+
     public function details(){
 		return $this->hasMany('Details');
 	}

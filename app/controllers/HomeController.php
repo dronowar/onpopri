@@ -1,5 +1,6 @@
 <?php
 
+
 class HomeController extends BaseController {
 
 	/*
@@ -15,10 +16,14 @@ class HomeController extends BaseController {
 	|
 	*/
 
+
+
 	public function getIndex()
 	{	
 		Debugbar::addMessage(Session::all());
 		return View::make('home')->with('user', Auth::user());
 	}
+	
+	
 
 }

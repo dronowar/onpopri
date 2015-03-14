@@ -33,12 +33,20 @@
 		{{ Form::select('delivery_provider_id', Lang::get('messages.delivery_provider_id'), null, array('class' => 'form-control')) }}
 	</div>
 	</div>
+
 	<div class="form-group">
 	<div class="col-sm-12">
 		Тула, ул. Рязанская, 8
 	</div>
 	</div>
 	{{ Form::text('delivery_adress', 'Тула, ул. Рязанская, 8', array('class' => 'form-control hidden')) }}
+
+	<div class="form-group">
+	<label for="payment_method_id" class="col-sm-6 control-label">Выберите способ оплаты:</label>
+	<div class="col-sm-4">
+		{{ Form::select('payment_method_id', Order::$payments, null, array('class' => 'form-control')) }}
+	</div>
+	</div>
 	<button type="submit" class="btn btn-success">Оплатить</button>
 	{{ Form::close() }}
 	<br/>

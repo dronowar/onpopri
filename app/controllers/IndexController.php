@@ -5,6 +5,7 @@ class IndexController extends BaseController {
 		//$s = Session::get('orderitem');
 		//$p = Param::getProductParam($s['details']);
 		//Debugbar::addMessage($p);
+		var_dump(URL::to('/order/payment/status'));
 		$f = array(
 			'url' => 'www.a.ru',
 			'paper' => '1',

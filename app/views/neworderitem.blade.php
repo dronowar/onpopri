@@ -8,7 +8,7 @@
 <h2>Новый постер</h2>
 {{ Form::open(array('url' => action('OrderitemController@postNew', array('product_id' => '1')), 'method' => 'post', 'role' => 'form', 'class' => 'form-horizontal')) }}
 
-@include('order/form')
+@include('form')
 <div class="form-group">
 <div class="col-sm-2">&nbsp;</div>
 <div class="col-sm-2">

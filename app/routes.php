@@ -14,10 +14,14 @@ Route::get('test', 'IndexController@getTest');
 
 Route::get('/', 'IndexController@getIndex');
 Route::controller('login', 'LoginController');
-Route::get('home', array('before' => 'auth', 'uses' => 'HomeController@getIndex'));
+
 Route::get('logout', function() {
     Auth::logout();
     return Redirect::to('/');
 });
-Route::controller('orderitem', 'OrderitemController');
-Route::controller('order', 'OrderController');
+Route::group(array('before' => 'auth'), function() {
+
+	Route::controller('home', 'HomeController');	
+	Route::controller('orderitem', 'OrderitemController');
+	Route::controller('order', 'OrderController');
+});
